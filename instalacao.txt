@@ -1,0 +1,43 @@
+Como instalar um projeto TS
+
+1- npm init --y (Gerar o package.json)
+2- npm i -D typescript express @types/express(Instalando o typescript como uma dependência de desenvolvimento)
+3- npx tsc --init (Produzirá um arquivo de base) use a seguinte config
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "CommonJS",
+    "typeRoots": ["node_modules/@types"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/**/*"],
+  "exclude": ["node_modules"]
+}
+
+4- Crie uma pasta src + um aquivo index.ts
+5- Crie um .gitignore contendo dentro do arquivo: node_modules fora da pasta src
+6- npm i -D ts-node-dev (instalação de dependência de desenvolvimento)
+7- no arquivo package.json -> "scripts": {
+    "dev": "tsnd --respawn src/index.ts"
+  }, (Criando um comando para rodar a aplicação toda vez que ela for atualizada)
+8- npm run dev 
+
+
+############################################
+PRISMA
+
+1- Instalação:
+npm install -D prisma
+
+2-Configurações iniciais:
+npx prisma init
+
+3- Modelo do arquivo .env
+DATABASE_URL="postgresql://Paloma:1234@localhost:5432/prisma_classes?schema=public"
+
+4- Migração do banco de dados
+npx prisma migrate dev
