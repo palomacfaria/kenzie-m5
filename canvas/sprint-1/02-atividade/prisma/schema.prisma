@@ -17,4 +17,33 @@ model Student {
   id Int @id @default(autoincrement())
   name String
   email String @unique
+  studentInfo StudentInfo?
+  questions Question[]
+  courses Course[]
+}
+
+//Relacionamento 1 para 1
+model StudentInfo {
+  id Int @id @default(autoincrement())
+  phone String
+  address String
+  studentId Int @unique 
+  student Student @relation(fields: [studentId], references: [id])
+}
+
+//Relacionamento 1 para N
+model Question {
+  id Int @id @default(autoincrement())
+  title String
+  content String? 
+  studentId Int 
+  student Student @relation(fields: [studentId], references: [id])
+}
+
+//Relacionamento N para N
+model Course {
+  id Int @id @default(autoincrement())
+  name String
+  description String?
+  student Student[]
 }

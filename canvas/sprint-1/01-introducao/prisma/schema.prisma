@@ -18,4 +18,30 @@ model Product {
   name String
   description String?
   price Float
+  storageInfo StorageInfo?
+  storeId Int
+  store Store @relation(fields:[storeId], references:[id])
+  categories Category[]
+}
+
+//Relacionamento N para N
+model Category{
+  id Int @id @default(autoincrement())
+  name String
+  products Product[]
+}
+
+//Relacionamento 1 para N
+model Store{
+  id Int @id @default(autoincrement())
+  name String
+  products Product[]
+}
+
+//Relacionamento 1 para 1
+model StorageInfo{
+  id Int @id @default(autoincrement())
+  stock Int
+  productId Int @unique 
+  product Product @relation(fields: [productId], references: [id])
 }

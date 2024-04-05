@@ -41,3 +41,6 @@ DATABASE_URL="postgresql://Paloma:1234@localhost:5432/prisma_classes?schema=publ
 
 4- Migração do banco de dados
 npx prisma migrate dev
+
+5- Migração do banco após a 1º Migração
+npx prisma migrate dev --name nome_que_desejar_descrever_alteracoes
