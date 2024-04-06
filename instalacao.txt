@@ -44,3 +44,6 @@ npx prisma migrate dev
 
 5- Migração do banco após a 1º Migração
 npx prisma migrate dev --name nome_que_desejar_descrever_alteracoes
+
+6- Visualizar tabelas
+npx prisma studio
