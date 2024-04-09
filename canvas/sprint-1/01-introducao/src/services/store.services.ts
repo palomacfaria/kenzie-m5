@@ -22,7 +22,7 @@ export class StoreServices {
   }
 
   //Leitura Multipla
-  async findMany(search?: string) {
+  async findMany(search?: string, take = 10, skip = 0) {
     if (!search) {
       return await prisma.store.findMany(); // Retorna todos se o search for undefined
     }
@@ -34,6 +34,8 @@ export class StoreServices {
           mode: "insensitive",
         },
       },
+      take, //Define a quantidade de itens por página
+      skip: skip * take
     });
   }
 }

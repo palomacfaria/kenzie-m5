@@ -18,10 +18,10 @@ async function exampleController() {
   }); */
 
   //LEITURA INDIVIDUAL
-  const response = await storeServices.findOne(1);
+/*   const response = await storeServices.findOne(1); */
 
   //LEITURA MULTIPLA
-  /* const response = await storeServices.findMany("oswaldo"); */
+  const response = await storeServices.findMany('a', 5, 1);
 
   console.log(response);
 }
