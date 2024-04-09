@@ -12,4 +12,23 @@ export class StudentServices {
   async createMany(data: TCreateStudentBody[]) {
     return await prisma.student.createMany({ data });
   }
+
+  //Método de leitura individual
+  async findOne(id: number) {
+    return await prisma.student.findFirst({
+      where: { id },
+      include: { studentInfo: true },
+    });
+  }
+
+  //Método de leitura multipla
+  async findMany(search?: string) {
+    if (!search) {
+      return await prisma.student.findMany(); // Retorna todos se o search for undefined
+    }
+    return await prisma.student.findMany({
+      where: { name: { contains: search, mode: "insensitive" } },
+      include: { studentInfo: true },
+    });
+  }
 }
