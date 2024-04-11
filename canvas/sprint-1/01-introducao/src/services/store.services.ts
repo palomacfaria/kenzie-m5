@@ -1,4 +1,5 @@
 import { prisma } from "../database/prisma";
+import { TUpdateStoreBody } from "../interfaces/store.interface";
 
 export class StoreServices {
   //Criação individual
@@ -35,7 +36,11 @@ export class StoreServices {
         },
       },
       take, //Define a quantidade de itens por página
-      skip: skip * take
+      skip: skip * take,
     });
+  }
+  //Update Individual
+  async updateOne(storeId: number, data: TUpdateStoreBody) {
+    return await prisma.store.update({ where: { id: storeId }, data });
   }
 }

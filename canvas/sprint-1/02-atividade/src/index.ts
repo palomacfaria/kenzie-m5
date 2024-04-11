@@ -3,7 +3,7 @@ import { StudentInfoServices } from "./services/studentInfo.services";
 
 async function exampleController() {
   const studentServices = new StudentServices();
-/*   const create = await studentServices.create({
+  /*   const create = await studentServices.create({
     name: "Rodolfo",
     email: "rodolfo@email.com.br",
   });
@@ -19,7 +19,7 @@ async function exampleController() {
   //####################################################
   const studentInfoServices = new StudentInfoServices();
 
-  const studentInfo1 = await studentInfoServices.create({
+  /* const studentInfo1 = await studentInfoServices.create({
     address: "Endereço 1",
     phone: "3333-3333",
     studentId: 1,
@@ -39,7 +39,17 @@ async function exampleController() {
 
   console.log(findOne);
   console.log(findMany);
-  console.log(searchMany);
+  console.log(searchMany);*/
+
+  const updateStudent = await studentServices.updateOne(1, { name: "Diogo" });
+
+  console.log(updateStudent);
+
+  const updateStudentInfo = await studentInfoServices.updateOne(1, {
+    phone: "(99) 99999-9999",
+  });
+
+  console.log(updateStudentInfo);
 }
 
 exampleController();

@@ -1,5 +1,5 @@
 import { prisma } from "../database/prisma";
-import { TCreateStudentBody } from "../interfaces/student.interfaces";
+import { TCreateStudentBody, TUpdateStudentBody } from "../interfaces/student.interfaces";
 
 export class StudentServices {
   //Criação individual
@@ -30,5 +30,10 @@ export class StudentServices {
       where: { name: { contains: search, mode: "insensitive" } },
       include: { studentInfo: true },
     });
+  }
+
+  //Método de atualização individual
+  async updateOne(id: number, data: TUpdateStudentBody){
+    return await prisma.student.update({where: {id}, data})
   }
 }
