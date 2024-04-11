@@ -1,3 +1,4 @@
+import { QuestionServices } from "./services/question.services";
 import { StudentServices } from "./services/student.services";
 import { StudentInfoServices } from "./services/studentInfo.services";
 
@@ -41,7 +42,9 @@ async function exampleController() {
   console.log(findMany);
   console.log(searchMany);*/
 
-  const updateStudent = await studentServices.updateOne(1, { name: "Diogo" });
+  //####################################################
+
+  /*   const updateStudent = await studentServices.updateOne(1, { name: "Diogo" });
 
   console.log(updateStudent);
 
@@ -49,7 +52,21 @@ async function exampleController() {
     phone: "(99) 99999-9999",
   });
 
-  console.log(updateStudentInfo);
+  console.log(updateStudentInfo); */
+
+  const questionServices = new QuestionServices();
+
+/*   await studentInfoServices.deleteOne(1);
+
+  await studentServices.deleteOne(1);
+
+  await questionServices.create({ title: "Para que serve a tag dialog?" }, 2);
+
+  await questionServices.create({ title: "O que é prisma?", content: "Me explique em detalhes por favor" }, 2);
+
+  await questionServices.create({ title: "Quando eu tiro férias?" }, 3); */
+
+  await questionServices.deleteMany(2);
 }
 
 exampleController();

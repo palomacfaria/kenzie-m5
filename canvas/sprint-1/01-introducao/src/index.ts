@@ -26,7 +26,17 @@ async function exampleController() {
 
   console.log(response); */
   //?ATUALIZAÇÃO MULTIPLA
-    const response = await productSercives.updateMany(1, { price: 4000 });
+  /*   const response = await productSercives.updateMany(1, { price: 4000 });
+
+  console.log(response); */
+
+  //?DELETE INDIVIDUAL
+  /*   const response = await productSercives.deleteOne(2);
+
+  console.log(response); */
+
+  //?DELETE MULTIPLO
+  const response = await productSercives.deleteMany(1);
 
   console.log(response);
 }

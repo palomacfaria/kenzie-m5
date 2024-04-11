@@ -10,6 +10,19 @@ export class ProductServices {
 
   //Update Multiplo
   async updateMany(storeId: number, data: TUpdateProductBody) {
-    return await prisma.product.updateMany({where:{storeId: storeId},  data });
+    return await prisma.product.updateMany({
+      where: { storeId: storeId },
+      data,
+    });
+  }
+
+  //Delete Individual
+  async deleteOne(productId: number) {
+    return await prisma.product.delete({ where: { id: productId } });
+  }
+
+  //Delete Multiplo
+  async deleteMany(id: number) {
+    return await prisma.product.deleteMany({where: {id}});
   }
 }

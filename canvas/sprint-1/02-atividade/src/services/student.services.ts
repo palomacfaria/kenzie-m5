@@ -1,5 +1,8 @@
 import { prisma } from "../database/prisma";
-import { TCreateStudentBody, TUpdateStudentBody } from "../interfaces/student.interfaces";
+import {
+  TCreateStudentBody,
+  TUpdateStudentBody,
+} from "../interfaces/student.interfaces";
 
 export class StudentServices {
   //Criação individual
@@ -33,7 +36,12 @@ export class StudentServices {
   }
 
   //Método de atualização individual
-  async updateOne(id: number, data: TUpdateStudentBody){
-    return await prisma.student.update({where: {id}, data})
+  async updateOne(id: number, data: TUpdateStudentBody) {
+    return await prisma.student.update({ where: { id }, data });
+  }
+
+  //Método de exclusão individual
+  async deleteOne(id: number) {
+    return await prisma.student.delete({ where: { id } });
   }
 }

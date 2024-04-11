@@ -14,4 +14,9 @@ export class StudentInfoServices {
   async updateOne(studentId: number, data: TUpdateStudentInfoBody) {
     return await prisma.studentInfo.update({ where: { studentId }, data });
   }
+
+  //Método de exclusão
+  async deleteOne(studentId: number) {
+    return await prisma.studentInfo.delete({ where: {studentId} });
+  }
 }
