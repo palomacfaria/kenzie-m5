@@ -7,32 +7,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product{
-  id Int @id @default(autoincrement())
-  name String 
+model Product {
+  id          Int          @id @default(autoincrement())
+  name        String
   description String?
-  price Float
+  price       Float
   storageInfo StorageInfo?
-  storeId Int 
-  store Store @relation(fields: [storeId], references: [id])
-  categories Category[]
+  storeId     Int
+  store       Store        @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  categories  Category[]
 }
 
-model Category{
-  id Int @id @default(autoincrement())
-  name String
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
   products Product[]
 }
 
-model Store{
-  id Int @id @default(autoincrement())
-  name String 
+model Store {
+  id       Int       @id @default(autoincrement())
+  name     String
   products Product[]
 }
 
-model StorageInfo{
-  id Int @id @default(autoincrement())
-  stock Int
-  productId Int @unique
-  product Product @relation(fields: [productId], references: [id])
+model StorageInfo {
+  id        Int     @id @default(autoincrement())
+  stock     Int
+  productId Int     @unique
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }

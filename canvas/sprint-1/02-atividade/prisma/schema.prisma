@@ -28,7 +28,7 @@ model StudentInfo {
   phone String
   address String
   studentId Int @unique 
-  student Student @relation(fields: [studentId], references: [id])
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
 }
 
 //Relacionamento 1 para N
@@ -36,8 +36,8 @@ model Question {
   id Int @id @default(autoincrement())
   title String
   content String? 
-  studentId Int 
-  student Student @relation(fields: [studentId], references: [id])
+  studentId Int? 
+  student Student? @relation(fields: [studentId], references: [id], onDelete: SetNull)
 }
 
 //Relacionamento N para N

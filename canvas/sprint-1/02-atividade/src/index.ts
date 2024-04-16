@@ -56,7 +56,7 @@ async function exampleController() {
 
   const questionServices = new QuestionServices();
 
-/*   await studentInfoServices.deleteOne(1);
+  /*   await studentInfoServices.deleteOne(1);
 
   await studentServices.deleteOne(1);
 
@@ -66,7 +66,9 @@ async function exampleController() {
 
   await questionServices.create({ title: "Quando eu tiro férias?" }, 3); */
 
-  await questionServices.deleteMany(2);
+  /* await questionServices.deleteMany(2); */
+
+  await studentServices.deleteOne(8);
 }
 
 exampleController();
