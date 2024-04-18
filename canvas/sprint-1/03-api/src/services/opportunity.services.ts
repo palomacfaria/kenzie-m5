@@ -1,17 +1,22 @@
+import { prisma } from "../database/prisma";
+import { TOpportunity, TOpportunityCreate } from "../schemas/opportunity.schemas";
+
 export class OpportunityServices{
-    create(){
+    async create(body: TOpportunityCreate): Promise<TOpportunity>{
+        const data = await prisma.opportunity.create({data: body});
+
+        return data;
+    }
+    async findMany(){
 
     }
-    findMany(){
+    async findOne(){
 
     }
-    findOne(){
+    async update(){
 
     }
-    update(){
-
-    }
-    delete(){
+    async delete(){
         
     }
 }
