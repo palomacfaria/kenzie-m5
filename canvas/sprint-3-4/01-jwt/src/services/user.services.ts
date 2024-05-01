@@ -7,6 +7,9 @@ import {
 import { generateId, userDatabase } from "../database/user.database";
 import bcrypt from "bcrypt";
 import { AppError } from "../errors/appError.error";
+import { injectable } from "tsyringe";
+
+@injectable()
 
 export class UserServices {
   async login(body: TUserLoginBody) {
