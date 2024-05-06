@@ -47,3 +47,21 @@ npx prisma migrate dev --name nome_que_desejar_descrever_alteracoes
 
 6- Visualizar tabelas
 npx prisma studio
+
+############################################
+JEST
+
+1- npm i -D jest
+2- npm i -D ts-jest
+3- npx ts-jest config:init -> Para gerar um arquivo jest.config.js
+4- Atualizar package.json ->   "scripts": {
+    "dev": "jest --verbose --runInBand"
+  },
+5- Configuração Jest:
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+
+export default {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  testMatch: ["**/__tests__/(units|integrations)/**/*.[jt]s?(x)"],
+};
