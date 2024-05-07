@@ -51,11 +51,11 @@ npx prisma studio
 ############################################
 JEST
 
-1- npm i -D jest
+1- npm i -D jest @types/jest
 2- npm i -D ts-jest
 3- npx ts-jest config:init -> Para gerar um arquivo jest.config.js
 4- Atualizar package.json ->   "scripts": {
-    "dev": "jest --verbose --runInBand"
+    "test": "jest --verbose --runInBand"
   },
 5- Configuração Jest:
 /** @type {import('ts-jest').JestConfigWithTsJest} */
