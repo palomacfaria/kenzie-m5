@@ -1,5 +1,5 @@
-import {generateId, todoDatabase} from "../database/database";
-import {ITodo, TCreateTodoBody} from "../interfaces/todo.interfaces";
+import { generateId, todoDatabase } from "../database/database";
+import { ITodo, TCreateTodoBody } from "../interfaces/todo.interfaces";
 
 export class TodoServices{
     getMany(){
@@ -7,7 +7,7 @@ export class TodoServices{
     }
 
     create(body: TCreateTodoBody): ITodo{
-        const newTodo = {id: generateId(), ...body}
+        const newTodo = { id: generateId(), ...body };
 
         todoDatabase.push(newTodo);
 
