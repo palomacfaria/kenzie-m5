@@ -1,19 +1,15 @@
-import { resetDatabase } from "../../database/database";
-import { todoCreateBodyMock, todoMock } from "../__mocks__/todo.mocks";
+import { todoCreateBodyMock } from "../__mocks__/todo.mocks";
 import { request } from "../utils/request";
+import { todoDefaultExpects } from "../utils/todoDefaultExpects";
 
-describe("Integration test: create todo", () => {
-  beforeEach(() => {
-    resetDatabase();
-  });
+describe("Integration test: create todo", () => {  
+   test("should be able to create a todo successfully", async () => {
+      const data = await request
+         .post("/todos")
+         .send(todoCreateBodyMock)
+         .expect(201)
+         .then((response) => response.body);
 
-  test("should be able to create todo successfully", async () => {
-    const data = await request
-      .post("/todos")
-      .send(todoCreateBodyMock)
-      .expect(201)
-      .then((response) => response.body);
-
-    expect(data).toStrictEqual(todoMock);
-  });
+       todoDefaultExpects(data, todoCreateBodyMock);  
+   });
 });
