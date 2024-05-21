@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Album {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(255)
+  year Int
+
+  bandId Int
+
+  tracks Track[]
+  genres Genre[] @relation("AlbumGenrePivot")
+  band Band @relation(fields: [bandId], references: [id])
+}
+
+model Track{
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(255)
+  length Int
+
+  albumId Int
+  album Album @relation(fields: [albumId], references: [id])
+}
+
+model Genre{
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+
+  albums Album[] @relation("AlbumGenrePivot")
+}
+
+model Band{
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  foundeAt Int?
+
+  albuns Album[]
+  groupMembers GroupMember[]
+}
+
+model GroupMember {
+  id Int @id @default(autoincrement())
+  joined DateTime @db.Date
+  left DateTime? @db.Date
+
+  bandId Int
+  band Band @relation(fields: [bandId], references: [id])
+
+  musicianId Int
+  musician Musician @relation(fields: [musicianId], references: [id])
+}
+
+model Musician{
+  id Int @id @default(autoincrement())
+  firstName String @db.VarChar(255)
+  lastName String @db.VarChar(255)
+  birthDate DateTime @db.Date
+
+  groupMembers GroupMember[]
+}
